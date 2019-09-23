@@ -36,3 +36,28 @@ def degre(G):
         D.append(deg(G,i))
     return D
 
+def nonOriente(M):
+    for i in range(len(M)):
+        for j in range(len(M)):
+            if (M[i][j] != M[j][i]):
+                return "false"
+    return "true"
+
+def kuratowski(n):
+    G=[[]]
+    for i in range(1,n+1):
+        L=[]
+        for j in range (1,n+1):
+            if (i!=j):
+                L.append(j)
+        G.append(L)
+    return G
+
+def ListeToMatrice(G):
+    n = len(G)-1
+    M = initMat(n,0)
+    for i in range(n):
+        for j in range(n):
+            if j+1 in G[i+1]:
+                M[i][j]=1
+    return M
